@@ -12,12 +12,12 @@ function Card({id,name,status,species,gender,origin,image,onClose,addFav,removeF
          removeFav(id);
       }else{
          setIsFav(true);
-         addFav({id,name,status,species,gender,origin,image,onClose})
+         addFav({id,name,status,species,gender,origin,image})
       }
    }
    useEffect(() => {
       myFavorites.forEach((fav) => {
-         if (fav.id === id) {
+         if (fav.id == id) {
             setIsFav(true);
          }
       });

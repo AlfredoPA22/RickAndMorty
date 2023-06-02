@@ -50,25 +50,22 @@ function App({removeFav}) {
      const newcharacters=characters.filter(character=>character.id != +id)
      removeFav(id);
      setCharacters(newcharacters);
-     
    }
    async function login(userData) {
       try {
          const { email, password } = userData;
          const URL = 'http://localhost:3001/rickandmorty/login/';
-         const {data}= await axios(URL + `?email=${email}&password=${password}`)
-         const {access} = data;
-         setAccess(access);
-         access ?navigate('/home'):Swal.fire({
-            title: 'Usuario Incorrecto!',
+         const {data}= await axios(URL + `?email=${email}&password=${password}`);
+         const {access}=data
+         setAccess(access)
+         access ? navigate('/home') : Swal.fire({
+            title: 'datos incorrectos',
             icon: 'error',
             confirmButtonText: 'Ok'
           });
       } catch (error) {
          console.log(error);
       }
-      
-     
    }
    function logout(){
       setAccess(false);
